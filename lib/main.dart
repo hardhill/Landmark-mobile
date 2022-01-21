@@ -112,7 +112,7 @@ class _ItemLandmarkState extends State<_ItemLandmark> {
                   width: 200,
                   child: Text(widget._landmark.description)
               ),
-              Spacer(),
+              const Spacer(),
               Container(
                 //child: Icon(Icons.arrow_right_alt_rounded),
                 child: Transform.rotate(
