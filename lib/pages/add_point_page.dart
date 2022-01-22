@@ -1,7 +1,11 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:image_picker/image_picker.dart';
 import '../widgets/bottom_app_bar.dart';
+import '../widgets/my_image.dart';
 
 class AddPointPage extends StatefulWidget {
   const AddPointPage({Key? key}) : super(key: key);
@@ -16,6 +20,7 @@ class _AddPointPageState extends State<AddPointPage> {
   double _longitude = 0;
   String _title = '';
   double halfOfScreen = 0;
+  File? imageFile;
   @override
   void initState() {
     super.initState();
@@ -24,76 +29,82 @@ class _AddPointPageState extends State<AddPointPage> {
   @override
   Widget build(BuildContext context) {
     halfOfScreen = MediaQuery.of(context).size.height;
+
     return Scaffold(
       appBar: AppBar(
         title: Text('Add new point'),
       ),
-      floatingActionButton: FloatingActionButton(
+      bottomNavigationBar: BAppBar(
+        latitude: _latitude,
+        longitude: _longitude,
         onPressed: () {
           getMyLocation();
         },
-        tooltip: 'Geolocation',
-        child: Icon(
-          Icons.location_on_outlined,
+      ),
+      body: Stack(children: [
+        ListView(
+          children: <Widget>[
+            ConstrainedBox(
+              constraints: BoxConstraints(
+                  maxHeight: MediaQuery.of(context).size.height * .6),
+              child: MyImageWidget(
+                isImage: imageFile?.path,
+              ),
+            ),
+            Row(
+              children: [
+                Expanded(
+                    child: Container(
+                        margin: EdgeInsets.only(left: 5, right: 2),
+                        child: ElevatedButton(
+                            onPressed: () {
+                              imagePickup(ImageSource.camera);
+                            },
+                            child: Text('Photo')))),
+                Expanded(
+                    child: Container(
+                        margin: EdgeInsets.only(left: 2, right: 5),
+                        child: ElevatedButton(
+                            onPressed: () {
+                              imagePickup(ImageSource.gallery);
+                            },
+                            child: Text('Image'))))
+              ],
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            ),
+            Container(
+                padding: EdgeInsets.only(left: 10, right: 10),
+                child: TextField(
+                  style: TextStyle(fontSize: 20),
+                  textInputAction: TextInputAction.next,
+                  decoration: InputDecoration(hintText: 'Description'),
+                ))
+          ],
         ),
-      ),
-      bottomNavigationBar: BAppBar(latitude: _latitude, longitude: _longitude),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      body: Column(
-        children: <Widget>[
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Expanded(
-                child: Container(
-                  child: ConstrainedBox(
-                    constraints:
-                        BoxConstraints.loose(Size.fromHeight(halfOfScreen)),
-                    child: Image(
-                      image: AssetImage('assets/images/nofoto.png'),
-                    ),
-                  ),
-                  color: Colors.white70,
-                ),
-              )
-            ],
-          ),
-          Row(
-            children: [
-              Expanded(
-                  child: Container(
-                      margin: EdgeInsets.only(left: 5, right: 2),
-                      child: ElevatedButton(
-                          onPressed: () {getImageOrPhoto(false);}, child: Text('Photo')))),
-              Expanded(
-                  child: Container(
-                      margin: EdgeInsets.only(left: 2, right: 5),
-                      child: ElevatedButton(
-                          onPressed: () {getImageOrPhoto(true);}, child: Text('Image'))))
-            ],
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          ),
-         Container(
-             padding:EdgeInsets.only(left: 10,right: 10),
-             child: TextField(
-               style: TextStyle(fontSize: 20),
-               textInputAction: TextInputAction.next,
-               decoration: InputDecoration(
-
-                 hintText: 'Description'
-               ),
-             ))
-        ],
-      ),
+        Positioned(
+            right: 5,
+            top: 5,
+            child: Container(
+              width: 50,
+              height: 100,
+              color: Colors.white,
+            )),
+      ]),
     );
   }
 
 //==============================================================================
-  void getImageOrPhoto(bool isImage){
-
+  Future<void> imagePickup(ImageSource source) async {
+    final ImagePicker _picker = ImagePicker();
+    final XFile? image = await _picker.pickImage(source: source);
+    if (image == null) {
+      return;
+    }
+    final imageTemporary = File(image.path);
+    setState(() {
+      imageFile = imageTemporary;
+    });
   }
-
-
 
   Future<void> getMyLocation() async {
     bool serviceEnabled;

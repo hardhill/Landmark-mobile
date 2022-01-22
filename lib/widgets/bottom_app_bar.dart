@@ -4,8 +4,8 @@ class BAppBar extends StatefulWidget {
   final longitude;
 
   final latitude;
-
-  const BAppBar({Key? key,this.latitude, this.longitude}) : super(key: key);
+  final VoidCallback? onPressed;
+  const BAppBar({Key? key,this.latitude, this.longitude, this.onPressed}) : super(key: key);
 
 
   @override
@@ -28,6 +28,7 @@ class _BAppBarState extends State<BAppBar> {
             Container(
               child:Text(widget.latitude.toString())
             ),
+            IconButton(onPressed: widget.onPressed, icon: Icon(Icons.location_on_outlined)),
             Container(
               child: Text(widget.longitude.toString()),
             )
