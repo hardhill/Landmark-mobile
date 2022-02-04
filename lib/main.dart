@@ -1,8 +1,9 @@
+import 'dart:math' as math;
+
 import 'package:flutter/material.dart';
 import 'package:landmark/pages/add_point_page.dart';
 import 'package:landmark/pages/unknown_page.dart';
 import 'package:landmark/utils/theme.dart';
-import 'dart:math'as math;
 
 import 'models/db_repo.dart';
 import 'models/landmark.dart';
@@ -22,9 +23,9 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Landmark',
       theme: basicTheme(),
-      onGenerateRoute: (settings){
-        if(settings.name == '/'){
-          return MaterialPageRoute(builder: (context)=>MainPage());
+      onGenerateRoute: (settings) {
+        if (settings.name == '/') {
+          return MaterialPageRoute(builder: (context) => MainPage());
         }
         var uri = Uri.parse(settings.name!);
         if (uri.pathSegments.first == 'addpoint') {
@@ -48,7 +49,12 @@ class MainPage extends StatelessWidget {
         ),
         body: ListLandmarkWidget(),
         floatingActionButton: FloatingActionButton(
-          onPressed: () { Navigator.pushNamed(context,'addpoint',);},
+          onPressed: () {
+            Navigator.pushNamed(
+              context,
+              'addpoint',
+            );
+          },
           child: const Icon(Icons.add_a_photo_outlined),
         ));
   }
@@ -87,7 +93,7 @@ class _ItemLandmark extends StatefulWidget {
   int index = 0;
   bool selected = false;
   late Landmark _landmark;
-  _ItemLandmark(this.selected, this.index){
+  _ItemLandmark(this.selected, this.index) {
     _landmark = dbLandmark.getLandmark(index);
   }
 
@@ -98,41 +104,29 @@ class _ItemLandmark extends StatefulWidget {
 class _ItemLandmarkState extends State<_ItemLandmark> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.only(left: 10,top: 5,right: 5),
-        child: Container(
-          height: 80,
-          color: widget.selected?Colors.blueGrey:Colors.black45,
-          child: Row(
-
-            children: <Widget>[
-              Image(image: Image.network(widget._landmark.image).image,height: 80,fit: BoxFit.cover),
-              Container(
-                padding: EdgeInsets.only(left: 10),
-                  width: 200,
-                  child: Text(widget._landmark.description)
-              ),
-              const Spacer(),
-              Container(
-                //child: Icon(Icons.arrow_right_alt_rounded),
-                child: Transform.rotate(
-                  angle: (25-90)*math.pi/180,
-                  child: Icon(Icons.arrow_right_alt_rounded),
-                ),
-                margin: EdgeInsets.all(5),
-                decoration: BoxDecoration(
-
-                  border: Border.all(color: Colors.white70,width: 2),
-                  shape: BoxShape.circle,
-                  color: Colors.indigo
-                ),
-                height: 42,
-                width: 42,
-
-              )
-            ],
+    return Card(
+      color: widget.selected ? Colors.blueGrey : Colors.black45,
+      child: ListTile(
+        leading: Image(
+            image: Image.network(widget._landmark.image).image,
+            height: 80,
+            fit: BoxFit.cover),
+        title: Container(
+            padding: EdgeInsets.only(left: 10),
+            child: Text(widget._landmark.description)),
+        trailing: Container(
+          child: Transform.rotate(
+            angle: (25 - 90) * math.pi / 180,
+            child: Icon(Icons.arrow_right_alt_rounded),
           ),
-        )
+          decoration: BoxDecoration(
+              border: Border.all(color: Colors.white70, width: 2),
+              shape: BoxShape.circle,
+              color: Colors.indigo),
+          height: 42,
+          width: 42,
+        ),
+      ),
     );
   }
 }
