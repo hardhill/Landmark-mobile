@@ -87,7 +87,7 @@ class _AddPointPageState extends State<AddPointPage> {
             child: Container(
               width: 50,
               height: 100,
-              color: Colors.white,
+              decoration: BoxDecoration(color: Colors.amber),
             )),
       ]),
     );
