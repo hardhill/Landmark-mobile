@@ -41,7 +41,7 @@ class _AddPointPageState extends State<AddPointPage> {
           getMyLocation();
         },
       ),
-      body: Stack(children: [
+      body: 
         ListView(
           children: <Widget>[
             ConstrainedBox(
@@ -81,15 +81,8 @@ class _AddPointPageState extends State<AddPointPage> {
                 ))
           ],
         ),
-        Positioned(
-            right: 5,
-            top: 5,
-            child: Container(
-              width: 50,
-              height: 100,
-              color: Colors.white,
-            )),
-      ]),
+        
+      
     );
   }
 
