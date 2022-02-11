@@ -6,6 +6,7 @@ import 'package:geolocator/geolocator.dart';
 import 'package:image_picker/image_picker.dart';
 import '../widgets/bottom_app_bar.dart';
 import '../widgets/my_image.dart';
+import '../widgets/select-category.dart';
 
 class AddPointPage extends StatefulWidget {
   const AddPointPage({Key? key}) : super(key: key);
@@ -15,7 +16,7 @@ class AddPointPage extends StatefulWidget {
 }
 
 class _AddPointPageState extends State<AddPointPage> {
-  //final GeolocatorPlatform _geolocatorPlatform = GeolocatorPlatform.instance;
+  
   double _latitude = 0;
   double _longitude = 0;
   String _title = '';
@@ -42,59 +43,51 @@ class _AddPointPageState extends State<AddPointPage> {
         },
       ),
       body: 
-        ListView(
-          children: <Widget>[
-            ConstrainedBox(
-              constraints: BoxConstraints(
-                  maxHeight: MediaQuery.of(context).size.height * .6),
-              child: MyImageWidget(
-                isImage: imageFile?.path,
+        Form(
+          child: ListView(
+            children: <Widget>[
+              ConstrainedBox(
+                constraints: BoxConstraints(
+                    maxHeight: MediaQuery.of(context).size.height * .6),
+                child: MyImageWidget(
+                  isImage: imageFile?.path,
+                ),
               ),
-            ),
-            Row(
-              children: [
-                Expanded(
-                    child: Container(
-                        margin: EdgeInsets.only(left: 5, right: 2),
-                        child: ElevatedButton(
-                            onPressed: () {
-                              imagePickup(ImageSource.camera);
-                            },
-                            child: Text('Photo')))),
-                Expanded(
-                    child: Container(
-                        margin: EdgeInsets.only(left: 2, right: 5),
-                        child: ElevatedButton(
-                            onPressed: () {
-                              imagePickup(ImageSource.gallery);
-                            },
-                            child: Text('Image'))))
-              ],
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            ),
-            Container(
-                padding: EdgeInsets.only(left: 10, right: 10),
-                child: TextField(
-                  style: TextStyle(fontSize: 20),
-                  textInputAction: TextInputAction.next,
-                  decoration: InputDecoration(hintText: 'Description'),
-                ))
-          ],
+              Row(
+                children: [
+                  Expanded(
+                      child: Container(
+                          margin: EdgeInsets.only(left: 5, right: 2),
+                          child: ElevatedButton(
+                              onPressed: () {
+                                imagePickup(ImageSource.camera);
+                              },
+                              child: Text('Photo')))),
+                  Expanded(
+                      child: Container(
+                          margin: EdgeInsets.only(left: 2, right: 5),
+                          child: ElevatedButton(
+                              onPressed: () {
+                                imagePickup(ImageSource.gallery);
+                              },
+                              child: Text('Image'))))
+                ],
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              ),
+              Container(
+                child: SelectCategory()
+              ),
+              Container(
+                  padding: EdgeInsets.only(left: 10, right: 10),
+                  child: TextFormField(
+                    style: TextStyle(fontSize: 20),
+                    textInputAction: TextInputAction.next,
+                    decoration: InputDecoration(hintText: 'Description'),
+                  ))
+            ],
+          ),
         ),
-<<<<<<< HEAD
-        
-      
-=======
-        Positioned(
-            right: 5,
-            top: 5,
-            child: Container(
-              width: 50,
-              height: 100,
-              decoration: BoxDecoration(color: Colors.amber),
-            )),
-      ]),
->>>>>>> 9ccb0508d8562b08d657af0b626d027ed3df3c71
+
     );
   }
 
