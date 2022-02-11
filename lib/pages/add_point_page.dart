@@ -81,8 +81,20 @@ class _AddPointPageState extends State<AddPointPage> {
                 ))
           ],
         ),
+<<<<<<< HEAD
         
       
+=======
+        Positioned(
+            right: 5,
+            top: 5,
+            child: Container(
+              width: 50,
+              height: 100,
+              decoration: BoxDecoration(color: Colors.amber),
+            )),
+      ]),
+>>>>>>> 9ccb0508d8562b08d657af0b626d027ed3df3c71
     );
   }
 
