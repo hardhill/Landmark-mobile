@@ -22,8 +22,7 @@ class _AddPointPageState extends State<AddPointPage> {
   String _title = '';
   double halfOfScreen = 0;
   File? imageFile;
-  final _categories = <int>[1,2,3,4,5,6];
-  int? _selectedValue;
+
   @override
   void initState() {
     super.initState();
@@ -78,17 +77,29 @@ class _AddPointPageState extends State<AddPointPage> {
             Container(
               // decoration: BoxDecoration(border: Border.all()),
               margin: EdgeInsets.only(left: 10, right: 10),
-              child: DropdownButtonFormField(
-                alignment: AlignmentDirectional.center ,
-                decoration: InputDecoration(
-                    filled: true,
-                    fillColor: Colors.black12,
-                    border: InputBorder.none),
-                value: _selectedValue,
-                items: _categories.map(buildMenuItem).toList(),
-                onChanged: (data) {
-                  _selectedValue = data as int;
-                },
+              child: SingleChildScrollView(
+                child: Row(
+                  children: [
+                    Container(
+                      child: SvgPicture.asset("assets/images/svg/1.svg"),
+                    ),
+                    Container(
+                      child: SvgPicture.asset("assets/images/svg/2.svg"),
+                    ),
+                    Container(
+                      child: SvgPicture.asset("assets/images/svg/3.svg"),
+                    ),
+                    Container(
+                      child: SvgPicture.asset("assets/images/svg/4.svg"),
+                    ),
+                    Container(
+                      child: SvgPicture.asset("assets/images/svg/5.svg"),
+                    ),
+                    Container(
+                      child: SvgPicture.asset("assets/images/svg/6.svg"),
+                    ),
+                  ],
+                ),
               ),
             ),
             Container(
@@ -105,31 +116,7 @@ class _AddPointPageState extends State<AddPointPage> {
   }
 
 // =============================================================================
-  DropdownMenuItem<int> buildMenuItem(int item) {
-    String itemSource = "assets/images/svg/${item}.svg";
-    return DropdownMenuItem(
 
-      value: item,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Container(
-            padding: EdgeInsets.fromLTRB(10, 5, 10, 5),
-            child: SvgPicture.asset(itemSource,
-              height: 32,
-              width: 32,
-              color: Colors.white,
-            ),
-          ),
-          Text("Item ${item}",
-              style: TextStyle(
-                color: Colors.blue.shade300,
-                fontSize: 18,
-              )),
-        ],
-      ),
-    );
-  }
 
 //==============================================================================
   Future<void> imagePickup(ImageSource source) async {
