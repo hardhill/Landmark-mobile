@@ -1,12 +1,68 @@
-<svg width="32" height="32" viewBox="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-            <title>Point of interest</title>
-            <g id="31.-Photo-camera" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
-                <g transform="translate(2.000000, 10.000000)" stroke="#222F3E" stroke-width="4">
-                    <path d="M9.6,13.4 L9.6,10.52 L9.6,10.52 C9.6,8.92941992 10.8946987,7.64 12.4803165,7.64 L16.3196835,7.64 C17.9104384,7.64 19.2,8.93265643 19.2,10.52 L19.2,13.4" id="Layer-1"></path>
-                    <path d="M24.8784375,14.4 L2.87308931,14.4 C1.28449202,14.4 0,15.6933791 0,17.2888432 L0,77.7511568 C0,79.3465319 1.2863259,80.64 2.87308931,80.64 L93.1269107,80.64 C94.715508,80.64 96,79.3466209 96,77.7511568 L96,17.2888432 C96,15.6934681 94.7136741,14.4 93.1269107,14.4 L71.164875,14.4 L64.1667696,2.47802639 C63.3634179,1.10943617 61.4237809,0 59.8344509,0 L36.2738304,0 C34.6935964,0 32.7398496,1.10945021 31.9303315,2.47802639 L24.8784375,14.4 L24.8784375,14.4 Z" id="Layer-2"></path>
-                    <circle id="Layer-3" cx="48" cy="48" r="21.12"></circle>
-                    <path d="M43.2,35.52 C40.294875,35.52 35.52,40.0695 35.52,43.2" id="Layer-4"></path>
-                    <path d="M38.4,11.52 L57.6,11.52" id="Layer-5"></path>
-                </g>
-            </g>
-        </svg>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="32"
+   height="32"
+   viewBox="0 0 100 84.640002"
+   version="1.1"
+   id="svg12"
+   sodipodi:docname="4.svg"
+   inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)">
+  <defs />
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1362"
+     inkscape:window-height="1088"
+     id="namedview14"
+     showgrid="false"
+     inkscape:zoom="11.313708"
+     inkscape:cx="14.011368"
+     inkscape:cy="16.720498"
+     inkscape:window-x="828"
+     inkscape:window-y="84"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="svg12" />
+  <title
+     id="photo">Point of interest</title>
+  <g
+     id="31.-Photo-camera"
+     style="fill:none;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:round"
+     transform="translate(0,-8)">
+    <g
+       transform="translate(2,10)"
+       id="g9"
+       style="stroke:#222f3e;stroke-width:4">
+      <path
+         d="m 9.6,13.4 v -2.88 0 c 0,-1.5905801 1.294699,-2.88 2.880317,-2.88 h 3.839366 C 17.910438,7.64 19.2,8.9326564 19.2,10.52 v 2.88"
+         id="Layer-1"
+         inkscape:connector-curvature="0" />
+      <path
+         d="M 24.878437,14.4 H 2.8730893 C 1.284492,14.4 0,15.693379 0,17.288843 V 77.751157 C 0,79.346532 1.2863259,80.64 2.8730893,80.64 H 93.126911 C 94.715508,80.64 96,79.346621 96,77.751157 V 17.288843 C 96,15.693468 94.713674,14.4 93.126911,14.4 H 71.164875 L 64.16677,2.4780264 C 63.363418,1.1094362 61.423781,0 59.834451,0 H 36.27383 c -1.580234,0 -3.53398,1.1094502 -4.343499,2.4780264 z"
+         id="Layer-2"
+         inkscape:connector-curvature="0" />
+      <circle
+         id="Layer-3"
+         cx="48"
+         cy="48"
+         r="21.120001" />
+      <path
+         d="m 43.2,35.52 c -2.905125,0 -7.68,4.5495 -7.68,7.68"
+         id="Layer-4"
+         inkscape:connector-curvature="0" />
+      <path
+         d="M 38.4,11.52 H 57.6"
+         id="Layer-5"
+         inkscape:connector-curvature="0" />
+    </g>
+  </g>
+</svg>

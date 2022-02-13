@@ -75,31 +75,38 @@ class _AddPointPageState extends State<AddPointPage> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             ),
             Container(
-              // decoration: BoxDecoration(border: Border.all()),
-              margin: EdgeInsets.only(left: 10, right: 10),
-              child: SingleChildScrollView(
-                child: Row(
+              padding: EdgeInsets.fromLTRB(10, 5, 10, 5),
+              height: 52,
+                child: ListView(
+                  scrollDirection: Axis.horizontal,
                   children: [
                     Container(
+
                       child: SvgPicture.asset("assets/images/svg/1.svg"),
+                      width: 48,
                     ),
                     Container(
                       child: SvgPicture.asset("assets/images/svg/2.svg"),
+                      width: 48,
                     ),
                     Container(
                       child: SvgPicture.asset("assets/images/svg/3.svg"),
+                      width: 48,
                     ),
                     Container(
                       child: SvgPicture.asset("assets/images/svg/4.svg"),
+                      width: 48,
                     ),
                     Container(
                       child: SvgPicture.asset("assets/images/svg/5.svg"),
+                      width: 48,
                     ),
                     Container(
                       child: SvgPicture.asset("assets/images/svg/6.svg"),
+                      width: 48,
                     ),
                   ],
-                ),
+
               ),
             ),
             Container(
