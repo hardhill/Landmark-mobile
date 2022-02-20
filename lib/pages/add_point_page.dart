@@ -22,7 +22,7 @@ class _AddPointPageState extends State<AddPointPage> {
   String _title = '';
   double halfOfScreen = 0;
   File? imageFile;
-  final _categories = <int>[1,2,3,4,5,6];
+  final _categories = <int>[1, 2, 3, 4, 5, 6];
   int? _selectedValue;
   @override
   void initState() {
@@ -36,6 +36,14 @@ class _AddPointPageState extends State<AddPointPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Add new point'),
+        actions: [
+          IconButton(
+            splashRadius: 20,
+            color: Colors.white,
+            onPressed: () {},
+            icon: Icon(Icons.save_alt_outlined, color: Colors.green,),
+          )
+        ],
       ),
       bottomNavigationBar: BAppBar(
         latitude: _latitude,
@@ -79,7 +87,7 @@ class _AddPointPageState extends State<AddPointPage> {
               // decoration: BoxDecoration(border: Border.all()),
               margin: EdgeInsets.only(left: 10, right: 10),
               child: DropdownButtonFormField(
-                alignment: AlignmentDirectional.center ,
+                alignment: AlignmentDirectional.center,
                 decoration: InputDecoration(
                     filled: true,
                     fillColor: Colors.black12,
@@ -92,12 +100,23 @@ class _AddPointPageState extends State<AddPointPage> {
               ),
             ),
             Container(
-                // padding: EdgeInsets.only(left: 10, right: 10),
-                child: TextFormField(
-                  style: TextStyle(fontSize: 20),
-                  textInputAction: TextInputAction.next,
-                  decoration: InputDecoration(hintText: 'Description'),
-                ))
+              padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
+              child: TextFormField(
+                style: TextStyle(fontSize: 20),
+                textInputAction: TextInputAction.next,
+                decoration: InputDecoration(
+                  hintText: 'Description',
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.cyan),
+                    borderRadius: BorderRadius.all(Radius.circular(10)),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.deepOrangeAccent),
+                    borderRadius: BorderRadius.all(Radius.circular(10)),
+                  ),
+                ),
+              ),
+            )
           ],
         ),
       ),
@@ -108,30 +127,53 @@ class _AddPointPageState extends State<AddPointPage> {
   DropdownMenuItem<int> buildMenuItem(int item) {
     String itemSource = "assets/images/svg/${item}.svg";
     return DropdownMenuItem(
-
       value: item,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Container(
             padding: EdgeInsets.fromLTRB(10, 5, 10, 5),
-            child: SvgPicture.asset(itemSource,
+            child: SvgPicture.asset(
+              itemSource,
               height: 32,
               width: 32,
               color: Colors.white,
             ),
           ),
-          Text("Item ${item}",
-              style: TextStyle(
-                color: Colors.blue.shade300,
-                fontSize: 18,
-              )),
+          TextCategorySelector(item),
         ],
       ),
     );
   }
 
 //==============================================================================
+  Widget TextCategorySelector(int value) {
+    String txt = "";
+    switch (value) {
+      case 2:
+        txt = "Rest place";
+        break;
+      case 3:
+        txt = "Beautifuls";
+        break;
+      case 4:
+        txt = "Interesting";
+        break;
+      case 5:
+        txt = "Pollutions";
+        break;
+      case 6:
+        txt = "Sports";
+        break;
+      default:
+        txt = "Landmark";
+    }
+    return Text(
+      txt,
+      style: TextStyle(color: Colors.blueAccent),
+    );
+  }
+
   Future<void> imagePickup(ImageSource source) async {
     final ImagePicker _picker = ImagePicker();
     final XFile? image = await _picker.pickImage(source: source);
