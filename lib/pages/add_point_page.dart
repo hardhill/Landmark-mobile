@@ -24,9 +24,16 @@ class _AddPointPageState extends State<AddPointPage> {
   File? imageFile;
   final _categories = <int>[1, 2, 3, 4, 5, 6];
   int? _selectedValue;
+  final _descriptionController = TextEditingController();
   @override
   void initState() {
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    _descriptionController.dispose();
+    super.dispose();
   }
 
   @override
@@ -41,7 +48,10 @@ class _AddPointPageState extends State<AddPointPage> {
             splashRadius: 20,
             color: Colors.white,
             onPressed: () {},
-            icon: Icon(Icons.save_alt_outlined, color: Colors.green,),
+            icon: Icon(
+              Icons.save_alt_outlined,
+              color: Colors.green,
+            ),
           )
         ],
       ),
@@ -102,6 +112,7 @@ class _AddPointPageState extends State<AddPointPage> {
             Container(
               padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
               child: TextFormField(
+                controller: _descriptionController,
                 style: TextStyle(fontSize: 20),
                 textInputAction: TextInputAction.next,
                 decoration: InputDecoration(
@@ -115,12 +126,22 @@ class _AddPointPageState extends State<AddPointPage> {
                     borderRadius: BorderRadius.all(Radius.circular(10)),
                   ),
                 ),
+                validator: _descriptionValidator,
               ),
             )
           ],
         ),
       ),
     );
+  }
+
+// =============================================================================
+  String? _descriptionValidator(String? value) {
+    if (value!.isEmpty) {
+      return "Description is required";
+    } else {
+      return null;
+    }
   }
 
 // =============================================================================
